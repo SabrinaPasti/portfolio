@@ -1,0 +1,83 @@
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+section[id] { scroll-margin-top: 18px; }
+.sp::after { opacity: .1; }
+.sp-strip-track { padding-block: 3px; }
+.sp-head {
+  background: transparent;
+  padding-block: 6px;
+  border-bottom: 1px dotted #807288;
+}
+.sp-logo { white-space: nowrap; font-size: clamp(23px, 3vw, 36px); }
+.sp-nav a { flex-direction: column; gap: 0; padding: 2px 10px; }
+.sp-heart::before { height: 7cqw; }
+.web-ring { max-width: 1320px; width: calc(100% - 48px); margin-inline: auto; }
+.favorites a:hover { text-decoration: underline; }
+.web-ring {
+  display: grid; grid-template-columns: minmax(0,1.55fr) minmax(0,.68fr) minmax(0,1fr);
+  gap: 18px; align-items: start; padding-block: 46px 12px;
+}
+.web-ring .sp-win { border-width: 1px; box-shadow: 3px 3px 0 #c8bfd1; }
+.web-ring .sp-tb { border-bottom-width: 1px; background: linear-gradient(90deg,#b2cdfd,#e3d9fb); }
+.favorites .sp-tb { background: linear-gradient(90deg,#b1e6df,#d8eff2); }
+.playlist .sp-tb, .sp-play .sp-tb { background: linear-gradient(90deg,#fba7d9,#edc5f1); }
+.sky-banner { background: #2046c8 url('discman.webp') center / cover; display: grid; align-items: center; aspect-ratio: 1.75; }
+.sky-banner h2 {
+  margin: 0; padding: 8% 5%; color: #fff; font: italic 900 clamp(32px,4.4vw,66px)/.92 var(--sp-display);
+  letter-spacing: -.06em; text-shadow: -2px -1px #30103c, 2px 1px #30103c, 3px 4px #30103c;
+}
+.sky-banner em { color: #ffcaed; }
+.guestbook, .tracks details p { padding: 0 16px; font: 15px/1.6 var(--sp-body); }
+.favorites img { display: block; width: calc(100% - 20px); margin: 10px; aspect-ratio: 1.15; object-fit: cover; }
+.favorites ul { list-style: none; margin: 0; padding: 0 10px 8px; }
+.favorites a { display: block; padding: 10px 3px; border-top: 1px dotted #b6a9bd; font: 15px var(--sp-ui); }
+.sleeve { display: flex; gap: 12px; padding: 18px 12px; align-items: center; background: #fff4fa; }
+.sleeve img { width: 24%; max-width: 68px; }
+.sleeve h2 { margin: 0; font: bold 24px/1.1 var(--sp-ui); }
+.sleeve p { margin: 4px 0 0; font-size: 12px; }
+.tracks details { border-top: 1px dotted #b6a9bd; }
+.tracks summary { padding: 12px; list-style: none; display: flex; gap: 8px; align-items: baseline; font: 16px var(--sp-ui); cursor: pointer; }
+.tracks summary::after { content: '+'; margin-left: auto; }
+.tracks [open] summary { background: #ffd3ec; }
+.tracks [open] summary::after { content: '−'; }
+.tracks summary span { color: #674960; }
+.pink-dialog { color: var(--sp-ink); background: #ffe2f0; border: 2px solid var(--sp-ink); padding: 0; width: min(420px,calc(100% - 36px)); box-shadow: 7px 7px 0 #442546; }
+.pink-dialog::backdrop { background: #24103688; }
+.pink-dialog .sp-tb { background: #f68cc6; }
+.tidy-content { padding: 22px; }
+.tidy-content h2 { margin: 0; font: bold 28px/1.08 var(--sp-ui); }
+.tidy-content .dismiss { display: block; background: transparent; border: 0; padding: 12px 0 0; text-decoration: underline; }
+@media (hover: hover) and (pointer: fine) {
+  .sp { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='27' viewBox='0 0 25 27'%3E%3Cpath d='M2 2v19l5-5 4 9 4-2-4-9h8Z' fill='%23ffa1d4' stroke='%23251031' stroke-width='2'/%3E%3Cpath d='m19 1 1 4 4 1-4 1-1 4-1-4-4-1 4-1Z' fill='%23b280ee'/%3E%3C/svg%3E") 2 2, auto; }
+  .sp a, .sp summary { cursor: pointer; }
+}
+@media (max-width: 1100px) {
+  .web-ring { grid-template-columns: 1.3fr 1fr; }
+  .homepage { grid-row: span 2; }
+  .favorites img { float: left; width: 30%; }
+}
+@media (max-width: 760px) {
+  .sp-head { gap: 3px 10px; padding-inline: 16px; }
+  .sp-nav { padding-top: 0; }
+  .sp-nav a { flex-direction: row; gap: 5px; }
+  .web-ring { grid-template-columns: minmax(0,1fr); gap: 20px; padding-top: 26px; }
+  .web-ring { width: calc(100% - 32px); }
+  .homepage { grid-row: auto; }
+  .sky-banner h2 { font-size: clamp(34px,8vw,54px); }
+}
+.sp-foot {
+  padding: 12px 10px; border-block: 1px solid var(--sp-ink);
+  background: linear-gradient(105deg,#ffd1e8,#eee4ff,#ffc4e2);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sleeve img { animation: sp-spin 12s linear infinite; }
+}
+.sp-task #open-message { background: #ffd5ed; }
+@media (max-width: 760px) {
+  .sp-stage { margin-bottom: 80px; }
+  .sp-task { gap: 5px; padding-inline: 6px; }
+  .sp-task > button, .sp-task > span { padding-inline: 6px; }
+  .sp-task > button { min-height: 44px; }
+}
