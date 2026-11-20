@@ -193,11 +193,6 @@ body{background:var(--sp-bg);color:var(--sp-ink);font-family:var(--sp-body);font
 .sp-crt-screen small{font-size:11px}.sp-crt-screen b{font-size:21px;font-weight:600;color:#fff;line-height:1}
 .sp-crt-screen u{text-decoration:none;animation:sp-blink 1s steps(2) infinite}
 @keyframes sp-blink{50%{opacity:0}}
-.sp-film-wrap{position:relative}
-.sp-film-wrap::after{content:"";position:absolute;inset:-30px;background:#fff;opacity:0;pointer-events:none;z-index:7}
-.sp-film-wrap.is-flash::after{animation:sp-flash .5s ease-out}
-@keyframes sp-flash{0%{opacity:.95}100%{opacity:0}}
-.sp-cam{cursor:pointer}
 .sp-about-copy{position:relative}
 .sp-floppy span{position:absolute;left:13%;top:42%;width:74%;height:50%;display:grid;place-content:center;text-align:center;font-family:var(--sp-ui);font-size:13px;line-height:1.15;color:var(--sp-ink)}
 .sp-folder{position:absolute;top:-40px;left:10px;width:74px;filter:drop-shadow(2px 3px 2px rgba(43,10,48,.35));transition:scale .25s .65s}
@@ -250,13 +245,6 @@ body{background:var(--sp-bg);color:var(--sp-ink);font-family:var(--sp-body);font
 
 /* sobre */
 .sp-about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.100fr);gap:48px;align-items:center}
-.sp-strip-film{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:6px;background:var(--sp-ink);padding:22px 10px 34px;transform:rotate(-3deg);box-shadow:5px 8px 10px rgba(43,10,48,.3);
-  background-image:repeating-linear-gradient(90deg,transparent 0 10px,#fff8fc 10px 20px),repeating-linear-gradient(90deg,transparent 0 10px,#fff8fc 10px 20px);background-size:100% 8px;background-position:0 6px,0 calc(100% - 20px);background-repeat:no-repeat}
-.sp-strip-film i{display:block;background:var(--c);aspect-ratio:3/4;overflow:hidden;position:relative;transition:transform .15s}
-.sp-strip-film i img{position:absolute;left:-22%;bottom:0;width:150%;max-width:none}
-.sp-strip-film i.is-on{transform:scale(1.180) rotate(2deg);z-index:2;outline:3px solid #fff}
-.sp-strip-film em{position:absolute;left:12px;bottom:3px;font-style:normal;font-family:var(--sp-ui);font-size:12px;color:#fff8fc}
-.sp-strip-film .sp-tape{top:-10px;right:30px;transform:rotate(5deg)}
 .sp-lead-wide{max-width:56ch}
 .sp-lead-wide p{margin:0 0 4px}
 .sp-chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0}
@@ -343,29 +331,69 @@ body{background:var(--sp-bg);color:var(--sp-ink);font-family:var(--sp-body);font
 @media (prefers-reduced-motion:reduce){
   .sp-strip-track,.sp-heart,.sp-spark,.sp-cd img,.sp-h1 .is-glitter,.sp-stage.is-playing .sp-eq u{animation:none}
 }
+
+/* Álbum pessoal e pausa entre os projetos */
+.sp-head{justify-content:space-between;background:var(--sp-paper);padding:16px clamp(18px,4vw,60px);border-bottom:2px solid var(--sp-ink);gap:16px}
+.sp-nav{border:0;padding:0;gap:12px}
+.sp-nav a{flex-direction:row;min-height:44px;gap:8px}
+.sp-head-cta{margin:0;min-height:44px}
+.sp-interlude{background:#f7f1df;color:#332639;border-block:1px solid #95848a;margin-top:48px}
+.sp-memory{max-width:880px;padding:clamp(40px,7vw,90px) 24px;margin:auto;display:grid;grid-template-columns:1fr 1.35fr;align-items:center;gap:clamp(30px,6vw,84px)}
+.sp-memory img,.sp-album figure{background:#fffaf2;padding:8px;box-shadow:2px 5px 12px #32223930;transform:rotate(-3deg)}
+.sp-memory img{width:100%;height:auto}
+.sp-memory h2{font:normal clamp(38px,5vw,74px)/.96 Georgia,serif;letter-spacing:-.05em;margin:0 0 24px}
+.sp-memory h2 em{color:#782354}
+.sp-memory p{max-width:45ch;margin:0 0 .8em}
+.sp-album{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:center;padding:16px}
+.sp-album figure{position:relative;margin:0;text-align:center}
+.sp-album figure::before{content:"";position:absolute;top:-7px;left:32%;width:36%;height:17px;background:#f3db8bbd;transform:rotate(-6deg)}
+.sp-album figure+figure{transform:rotate(4deg) translateY(16px)}
+.sp-album img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover}
+.sp-album figcaption{padding:8px 0 2px;font:italic clamp(14px,1.5vw,20px)/1.2 Georgia,serif}
+.sp-about-copy p+p{margin-top:.85em}
+@media(max-width:760px){
+  .sp-head{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}
+  .sp-logo{justify-self:start;font-size:24px}
+  .sp-nav{grid-column:1/-1;grid-row:2;justify-content:space-between;border-top:1px solid #d8c6d2;padding-top:5px}
+  .sp-nav a{justify-content:center;font-size:15px;gap:6px}
+  .sp-nav svg{width:17px;height:17px}
+  .sp-desk{grid-template-areas:"copy" "stage";padding:32px 20px;gap:12px}
+  .sp-left,.sp-copy>.sp-fly,.sp-stage>.sp-heart,.sp-stage>.sp-cd,.sp-stage>.sp-play,.sp-crt,.sp-floppy,.sp-chat-wrap>.sp-deco{display:none}
+  .sp-stage{max-width:330px;margin:18px auto 0;aspect-ratio:1.1}
+  .sp-foto{left:6%;top:12%;width:62%}
+  .sp-phone{left:72%;top:20%;width:23%}
+  .sp-star{left:2%;top:69%;width:16%}
+  .sp-lead{line-height:1.6}
+  .sp-mini a{padding-block:8px}
+  .sp-tools{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sp-tools button{display:flex;align-items:center;padding:6px;gap:7px;font-size:14px;min-height:44px}
+  .sp-tools button i{width:26px;height:26px;font-size:16px}
+  .sp-tools button em{display:none}
+  .sp-menubar{display:none}
+  .sp-task{position:relative}
+  .sp-about,.sp-contact{gap:24px}
+  .sp-about{padding-inline:20px}
+  .sp-memory{grid-template-columns:1fr;gap:26px;padding:38px 24px}
+  .sp-memory img{width:min(68%,230px);justify-self:center}
+  .sp-interlude{margin-top:24px}
+  .sp-album{max-width:480px;margin:auto;padding:10px 4px 20px}
+}
 </style>
 </head>
 <body>
 <div class="sp">
 <section id="home">
 
-  <div class="sp-strip" aria-hidden="true">
-    <div class="sp-strip-track">
-      <span>NOVO CASE NO AR: GOCASE</span><span>PRODUCT DESIGN + WEB DESIGN</span><span>SÃO PAULO, BR</span><span>MELHOR VISUALIZADO COM CAFÉ</span>
-      <span>NOVO CASE NO AR: GOCASE</span><span>PRODUCT DESIGN + WEB DESIGN</span><span>SÃO PAULO, BR</span><span>MELHOR VISUALIZADO COM CAFÉ</span>
-    </div>
-  </div>
+
 
   <header class="sp-head">
     <a class="sp-logo" href="#home" aria-label="Sabrina Pasti, início">sabrina<br>pasti</a>
     <nav class="sp-nav" aria-label="Seções">
-      <a href="#home" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="#2b0a30" stroke-width="2" stroke-linejoin="round"><path d="M3 11 12 3l9 8v10h-6v-6H9v6H3z" fill="#ff8cc6"/></svg>home</a>
       <a href="#cases"><svg viewBox="0 0 24 24" fill="none" stroke="#2b0a30" stroke-width="2" stroke-linejoin="round"><path d="M2 6h8l2 3h10v11H2z" fill="#9fd4ff"/></svg>cases</a>
       <a href="#sobre"><svg viewBox="0 0 24 24" fill="none" stroke="#2b0a30" stroke-width="2" stroke-linejoin="round"><path d="M12 21C5 15 2 12 2 8a5 5 0 0 1 10-1 5 5 0 0 1 10 1c0 4-3 7-10 13z" fill="#cdbcff"/></svg>sobre</a>
       <a href="#processo"><svg viewBox="0 0 24 24" fill="none" stroke="#2b0a30" stroke-width="2" stroke-linejoin="round"><path d="m12 2 3 7 7 .6-5.4 4.6L18.5 22 12 18l-6.5 4 1.9-7.8L2 9.600 9 9z" fill="#fff3a6"/></svg>processo</a>
-      <a href="#contato"><svg viewBox="0 0 24 24" fill="none" stroke="#2b0a30" stroke-width="2" stroke-linejoin="round"><path d="M2 5h20v14H2z" fill="#ffc2e0"/><path d="m2 5 10 8 10-8"/></svg>contato</a>
     </nav>
-    <a class="sp-btn is-sm sp-head-cta" href="#contato">vamos conversar</a>
+    <a class="sp-btn is-sm sp-head-cta" href="https://wa.me/5511946094530" aria-label="Vamos conversar pelo WhatsApp">conversar ↗</a>
   </header>
 
   <div class="sp-desk">
@@ -477,27 +505,28 @@ body{background:var(--sp-bg);color:var(--sp-ink);font-family:var(--sp-body);font
     </div>
   </section>
 
+  <section class="sp-interlude" aria-labelledby="primeiros-cliques">
+    <div class="sp-memory">
+      <img src="primeira-internet.webp" alt="Recorte de um computador rosa e fones sobre papel quadriculado lilás" width="570" height="760" loading="lazy">
+      <div><h2 id="primeiros-cliques">meus primeiros<br><em>cliques.</em></h2>
+      <p>Conheci a internet nos anos 2000. Um link levava a outro e, quando eu via, já tinha descoberto um cantinho novo.</p>
+      <p>Quis trazer um pouco dessa sensação pra cá. O glitter, as janelinhas e os recortes são meu jeito de lembrar como era gostoso explorar.</p></div>
+    </div>
+  </section>
+
   <!-- ================= SOBRE ================= -->
   <section class="sp-sec sp-about" id="sobre">
-    <div class="sp-film-wrap" id="sp-film-wrap">
-    <button type="button" class="sp-deco sp-cam" data-drag id="sp-cam" style="--w:150px;--r:12deg;right:-3%;top:-46%" aria-label="Câmera: clique para tirar a foto"><img src="camera.webp" alt=""></button>
-    <div class="sp-strip-film" id="sp-film" aria-hidden="true">
-      <span class="sp-tape"></span>
-      <i style="--c:#9fd0ff"><img src="c1.webp" alt=""></i>
-      <i style="--c:#d9c8ff"><img src="c2.webp" alt=""></i>
-      <i style="--c:#fff3a6"><img src="c3.webp" alt=""></i>
-      <i style="--c:#ffc4e3"><img src="c4.webp" alt=""></i>
-      <i style="--c:#bdf0d2"><img src="c5.webp" alt=""></i>
-      <em>sabrina_lendo_o_briefing.mov</em>
-    </div>
+    <div class="sp-album">
+      <figure><img src="meu-cachorro.webp" alt="Meu cachorro marrom apoiando as patas no meu colo" loading="lazy"><figcaption>meu companheiro ♡</figcaption></figure>
+      <figure><img src="recortes.webp" alt="Colagem de papéis coloridos com esboços de interfaces" loading="lazy"><figcaption>ideias em recortes</figcaption></figure>
     </div>
     <div class="sp-about-copy">
       <p class="sp-kicker">sobre mim</p>
       <h2 class="sp-h2"><span>prazer,</span><span>sabrina.</span></h2>
       <div class="sp-lead sp-lead-wide">
-        <p>Sou product designer e web designer. Já desenhei <strong>banco digital, plataforma de saúde no trabalho, sistema de clínica e e-commerce</strong>.</p>
-        <p>O assunto muda de um projeto para o outro. O jeito de trabalhar é o mesmo: entender a regra, decidir o que importa e desenhar para quem vai usar.</p>
-        <p class="sp-draft">rascunho: faltam aqui seu tempo de experiência, formação e onde você trabalha hoje</p>
+        <p>Sou Product Designer em São Paulo. Há mais de quatro anos desenho produtos digitais, da pesquisa com usuários aos detalhes que acompanho com o time de desenvolvimento.</p>
+        <p>Na Toodoo, conduzo workshops com clientes e desenho jornadas para web e mobile. Também trabalho em tempo parcial na Sevn Technologies, onde cuido do design de produtos e da evolução da identidade visual.</p>
+        <p>Minha formação une Comunicação e Design pela UFPE e Web Design, que hoje estudo na FIAP.</p>
       </div>
       <div class="sp-deco sp-pens" data-drag style="--w:104px;--r:38deg;right:16%;bottom:-118px" aria-hidden="true"><img src="pens.webp" alt=""></div>
       <ul class="sp-chips">
@@ -681,28 +710,24 @@ body{background:var(--sp-bg);color:var(--sp-ink);font-family:var(--sp-body);font
     {id:'gocase',nome:'gocase',novo:true,cor:'#ff6f9f',poster:'',video:'',
      tipo:'e-commerce · site desktop e mobile',
      desafio:'Comprar com menos atrito. Cada campo a mais em um formulário é gente desistindo antes de pagar.',
-     decisoes:['Login e cadastro com o mínimo de campos e de passos','Carrinho com confirmação clara de item adicionado e barra de progresso legível','Página de marca que não depende de desconto: a personalização é o diferencial','Componentes publicados em biblioteca, para desktop e mobile'],
-     rascunho:'rascunho montado a partir de briefings internos: confirmar seu papel, o que pode ser mostrado e o resultado'},
+     decisoes:['Login e cadastro com o mínimo de campos e de passos','Carrinho com confirmação clara de item adicionado e barra de progresso legível','Página de marca que não depende de desconto: a personalização é o diferencial','Componentes publicados em biblioteca, para desktop e mobile']},
     {id:'equillibra',nome:'equillibra',cor:'#ff5a4f',poster:'eq.jpg',video:'',
      tipo:'plataforma web · bem-estar no trabalho (NR-1)',
      desafio:'O risco psicossocial de uma equipe costuma ficar invisível. RH e liderança precisam enxergar esse risco sem planilha, e o colaborador precisa confiar para responder com sinceridade.',
-     decisoes:['Painel com a pontuação geral da empresa e o risco em quatro níveis, de baixo a muito alto','Campanhas de avaliação por link ou QR Code, com adesão em tempo real','Questionários prontos (COPSOQ, ISTAS21, WHO-5) e um construtor próprio','Resposta anônima, em qualquer tela, com perguntas em texto, imagem ou vídeo'],
-     rascunho:'falta: seu papel no projeto e o resultado (adesão, tempo de resposta, clientes)'},
-    {id:'tfes',nome:'t-fes',cor:'#5b6cff',poster:'tfes.jpg',video:'',
+     decisoes:['Painel com a pontuação geral da empresa e o risco em quatro níveis, de baixo a muito alto','Campanhas de avaliação por link ou QR Code, com adesão em tempo real','Questionários prontos (COPSOQ, ISTAS21, WHO-5) e um construtor próprio','Resposta anônima, em qualquer tela, com perguntas em texto, imagem ou vídeo']},
+    {entrega:'Uma base personalizável reúne contas, transferências, cartões e agendamentos. Cada marca pode mudar a identidade visual e preservar a hierarquia das ações financeiras.',id:'tfes',nome:'t-fes',cor:'#5b6cff',poster:'tfes.jpg',video:'',
      tipo:'banco digital white label · app',
      desafio:'Uma experiência bancária confiável e simples, mesmo com muitas funções financeiras, sobre uma base que troca de marca sem perder consistência.',
-     decisoes:['Saldo e ações principais logo no topo da tela','Cartões para organizar a vida financeira','Interface modular, pronta para receber outra marca','Ícones familiares e fluxos curtos para as tarefas que se repetem'],
-     rascunho:'falta: resultado e quantas marcas usam a base'},
-    {id:'vitallia',nome:'vitallia',cor:'#7a55d8',poster:'vit.jpg',video:'',
+     decisoes:['Saldo e ações principais logo no topo da tela','Cartões para organizar a vida financeira','Interface modular, pronta para receber outra marca','Ícones familiares e fluxos curtos para as tarefas que se repetem']},
+    {entrega:'A proposta conecta a rotina da clínica no desktop ao acompanhamento no celular. A equipe organiza atendimentos e o paciente consulta planos, exames e o progresso das próprias metas.',id:'vitallia',nome:'vitallia',cor:'#7a55d8',poster:'vit.jpg',video:'',
      tipo:'gestão clínica white label · desktop e app',
      desafio:'Clínicas tocam atendimento, prontuário, estoque, financeiro e acompanhamento do paciente ao mesmo tempo. Era preciso reduzir a carga da equipe e manter o paciente engajado no tratamento.',
-     decisoes:['Um sistema só, com dois lados: clínica no desktop, paciente no app','Fluxo de atendimento e anamnese, estoque, financeiro e leads no mesmo lugar','App com consultas, plano alimentar, treinos, metas e exames','Gamificação para o paciente continuar o tratamento'],
-     rascunho:'falta: resultado (uso do app, tempo de atendimento)'}
+     decisoes:['Um sistema só, com dois lados: clínica no desktop, paciente no app','Fluxo de atendimento e anamnese, estoque, financeiro e leads no mesmo lugar','App com consultas, plano alimentar, treinos, metas e exames','Gamificação para o paciente continuar o tratamento']}
   ];
   var tools=$('#sp-tools'), info=$('#sp-info'), poster=$('#sp-poster'), video=$('#sp-video'), bars=$('#sp-bars'), load=$('#sp-load'), badge=$('#sp-badge'), count=$('#sp-count'), timer;
   function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
   function fill(c,i){
-    info.innerHTML='<h3>'+esc(c.nome)+'</h3><p class="sp-type">'+esc(c.tipo)+'</p><h4>o desafio</h4><p>'+esc(c.desafio)+'</p><h4>o que eu decidi</h4><ul>'+c.decisoes.map(function(d){return '<li>'+esc(d)+'</li>'}).join('')+'</ul><h4>resultado</h4><p class="sp-draft">'+esc(c.rascunho)+'</p>';
+    info.innerHTML='<h3>'+esc(c.nome)+'</h3><p class="sp-type">'+esc(c.tipo)+'</p><h4>o desafio</h4><p>'+esc(c.desafio)+'</p><h4>o que eu decidi</h4><ul>'+c.decisoes.map(function(d){return '<li>'+esc(d)+'</li>'}).join('')+'</ul>'+(c.entrega?'<h4>solução proposta</h4><p>'+esc(c.entrega)+'</p>':'');
     poster.hidden=!c.poster||!!c.video; if(c.poster){poster.src=c.poster; poster.alt='Tela do projeto '+c.nome}
     video.hidden=!c.video; if(c.video){video.src=c.video; video.play().catch(function(){})} else {video.removeAttribute('src')}
     bars.hidden=!!(c.poster||c.video); bars.style.display=bars.hidden?'none':'';
@@ -731,12 +756,6 @@ body{background:var(--sp-bg);color:var(--sp-ink);font-family:var(--sp-body);font
     b.addEventListener('click',function(){canvas.style.setProperty('--mat',c); $$('#sp-palette button').forEach(function(x){x.setAttribute('aria-pressed',x===b)})});
     pal.appendChild(b);
   });
-
-  /* ---- SOBRE: tira de filme em stop-motion ---- */
-  var cells=$$('#sp-film i'), fi=0;
-  if(cells.length&&!calm) setInterval(function(){cells.forEach(function(c,k){c.classList.toggle('is-on',k===fi)}); fi=(fi+1)%(cells.length+2)},420);
-  var cam=$('#sp-cam'), wrap=$('#sp-film-wrap');
-  cam.addEventListener('click',function(){ if(cam.classList.contains('is-drag')) return; wrap.classList.remove('is-flash'); void wrap.offsetWidth; wrap.classList.add('is-flash'); fi=0; });
 
   /* ---- PROCESSO: organizar a bagunça ---- */
   var proc=$('#sp-proc'), tidy=$('#sp-tidy'), files=$$('.sp-file'), steps=$$('.sp-steps li');
