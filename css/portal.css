@@ -22,7 +22,7 @@ section[id] { scroll-margin-top: 18px; }
 .web-ring .sp-tb { border-bottom-width: 1px; background: linear-gradient(90deg,#b2cdfd,#e3d9fb); }
 .favorites .sp-tb { background: linear-gradient(90deg,#b1e6df,#d8eff2); }
 .playlist .sp-tb, .sp-play .sp-tb { background: linear-gradient(90deg,#fba7d9,#edc5f1); }
-.sky-banner { background: #2046c8 url('discman.webp') center / cover; display: grid; align-items: center; aspect-ratio: 1.75; }
+.sky-banner { background: #2046c8 url('../img/discman.webp') center / cover; display: grid; align-items: center; aspect-ratio: 1.75; }
 .sky-banner h2 {
   margin: 0; padding: 8% 5%; color: #fff; font: italic 900 clamp(32px,4.4vw,66px)/.92 var(--sp-display);
   letter-spacing: -.06em; text-shadow: -2px -1px #30103c, 2px 1px #30103c, 3px 4px #30103c;
