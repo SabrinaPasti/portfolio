@@ -358,7 +358,7 @@ body{background:var(--sp-bg);color:var(--sp-ink);font-family:var(--sp-body);font
   .sp-nav a{justify-content:center;font-size:15px;gap:6px}
   .sp-nav svg{width:17px;height:17px}
   .sp-desk{grid-template-areas:"copy" "stage";padding:32px 20px;gap:12px}
-  .sp-left,.sp-copy>.sp-fly,.sp-stage>.sp-heart,.sp-stage>.sp-cd,.sp-stage>.sp-play,.sp-crt,.sp-floppy,.sp-chat-wrap>.sp-deco{display:none}
+  .sp-left,.sp-copy>.sp-fly,.sp-stage>.sp-heart,.sp-stage>.sp-cd,.sp-crt,.sp-floppy,.sp-chat-wrap>.sp-deco{display:none}
   .sp-stage{max-width:330px;margin:18px auto 0;aspect-ratio:1.1}
   .sp-foto{left:6%;top:12%;width:62%}
   .sp-phone{left:72%;top:20%;width:23%}
@@ -451,6 +451,15 @@ body{background:var(--sp-bg);color:var(--sp-ink);font-family:var(--sp-body);font
         <button type="button" class="sp-phone-hit" id="sp-phone-hit" aria-label="Ler a mensagem no celular"></button>
       </div>
 
+      <div class="sp-win sp-play" data-drag data-win>
+        <div class="sp-tb"><b>tocando agora</b><i><button type="button" aria-label="Fechar janela" data-close>×</button></i></div>
+        <div class="sp-wb" style="padding:8px 12px 10px">
+          <p><b style="font-weight:500">gocase.case</b> · o mais recente</p>
+          <div class="sp-eq" aria-hidden="true"><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u></div>
+          <div class="sp-ctrl"><button type="button" id="sp-play-btn" aria-label="Pausar animação">❚❚</button><a href="#cases">ver o case →</a></div>
+        </div>
+      </div>
+
       <span class="sp-hint">psiu… arraste as janelas pela barra</span>
     </div>
 
@@ -472,27 +481,9 @@ body{background:var(--sp-bg);color:var(--sp-ink);font-family:var(--sp-body);font
         <ul><li>entender o problema</li><li>decidir antes de desenhar</li><li>testar com gente de verdade</li><li>beber água</li></ul>
       </div>
     </aside>
-    <aside class="sp-right" aria-label="Mensagens e destaque">
-      <div class="sp-win"><div class="sp-tb"><b>✉ nova mensagem</b></div>
-        <div class="sp-wb"><p>Tem um produto pedindo socorro?</p><a href="#contato">abrir conversa →</a></div>
-      </div>
-      <div class="sp-win sp-play" data-drag data-win>
-        <div class="sp-tb"><b>tocando agora</b><i><button type="button" aria-label="Fechar janela" data-close>×</button></i></div>
-        <div class="sp-wb" style="padding:8px 12px 10px">
-          <p><b style="font-weight:500">gocase.case</b> · o mais recente</p>
-          <div class="sp-eq" aria-hidden="true"><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u></div>
-          <div class="sp-ctrl"><button type="button" id="sp-play-btn" aria-label="Pausar animação">❚❚</button><a href="#cases">ver o case →</a></div>
-        </div>
-      </div>
-
-    </aside>
   </div>
 
   </section>
-
-  <nav class="quick-band" aria-label="Explore o portfólio">
-    <a href="#cases">▣ &nbsp; projetos</a><a href="#primeiros-cliques">♡ &nbsp; primeiros cliques</a><a href="#processo">♫ &nbsp; meu processo</a>
-  </nav>
 
   <!-- ================= CASES ================= -->
   <section class="sp-sec" id="cases">
@@ -526,8 +517,8 @@ body{background:var(--sp-bg);color:var(--sp-ink);font-family:var(--sp-body);font
     <section class="homepage sp-win" id="primeiros-cliques" aria-labelledby="cliques-title">
       <div class="sp-tb"><b>♡ sabrina / página pessoal</b></div>
       <div class="sky-banner"><h2 id="cliques-title">meus<br>primeiros<br><em>cliques.</em></h2></div>
-      <div class="guestbook"><p>Conheci a internet nos anos 2000, quando um link abria outro e eu já nem lembrava o que tinha ido procurar. Minha parte favorita era descobrir a cara que cada pessoa dava ao seu cantinho da web.</p>
-      <p>Este aqui é o meu. Pode mexer nas janelas. Depois me conta qual delas te deu saudade. ♡</p></div>
+      <div class="guestbook"><p>Conheci a internet nos anos 2000. Uma página abria com música, outra tinha um cursor de estrelinha. Antes mesmo de ler, já dava pra sentir que tinha alguém do outro lado.</p>
+      <p>Quando fiz meu portfólio, quis que ele também tivesse a minha cara. Por isso tem recorte de papel, foto do meu cachorro e um celular rosa que guardou um recado pra você.</p></div>
     </section>
     <aside class="favorites sp-win"><div class="sp-tb"><b>☆ meus favoritos</b></div>
       <img src="primeira-internet.webp" alt="Computador rosa recortado sobre papel lilás" loading="lazy">
@@ -594,12 +585,22 @@ body{background:var(--sp-bg);color:var(--sp-ink);font-family:var(--sp-body);font
     <p class="sp-foot">© 2026 Sabrina Pasti · feito em São Paulo, com um pouco de glitter</p>
   </section>
 
-  <dialog id="tidy-dialog" aria-labelledby="tidy-title" aria-describedby="tidy-message">
+  <dialog class="pink-dialog" id="tidy-dialog" aria-labelledby="tidy-title" aria-describedby="tidy-message">
     <form method="dialog"><div class="sp-tb"><b>✦ assistente de faxina</b><button aria-label="Fechar aviso">×</button></div>
       <div class="tidy-content"><h2 id="tidy-title">Bagunça organizada. Glitter recuperado.</h2>
       <p id="tidy-message">As janelas voltaram pro lugar. Se o seu projeto também tem 37 abas abertas, me conta qual delas está dando trabalho.</p>
       <a class="sp-btn is-hot" href="https://wa.me/5511946094530">Chamar a Sabrina no WhatsApp ↗</a>
       <button class="dismiss">Continuar explorando</button></div>
+    </form>
+  </dialog>
+  <dialog class="pink-dialog" id="message-dialog" aria-labelledby="message-title" aria-describedby="message-body">
+    <form method="dialog">
+      <div class="sp-tb"><b>✉ mensagem da Sabrina</b><button aria-label="Fechar mensagem">×</button></div>
+      <div class="tidy-content">
+        <h2 id="message-title">Oi! Ainda bem que você clicou.</h2>
+        <p id="message-body">Eu ia mandar um “oi, sumido”, mas a gente acabou de se conhecer. Então começo com uma pergunta melhor: qual ideia sua merecia sair dos favoritos e virar projeto? ♡</p>
+        <a class="sp-btn is-hot" href="https://wa.me/5511946094530">Responder</a>
+      </div>
     </form>
   </dialog>
   <div class="sp-task">
@@ -609,7 +610,7 @@ body{background:var(--sp-bg);color:var(--sp-ink);font-family:var(--sp-body);font
     </div>
     <button type="button" class="sp-start" id="sp-start" aria-expanded="false" aria-controls="sp-menu">♥ iniciar</button>
     <span class="sp-tab">meu-cantinho.html</span>
-    <span class="sp-tab">nova mensagem (1)</span>
+    <button type="button" id="open-message" aria-haspopup="dialog" aria-controls="message-dialog">nova mensagem (1)</button>
     <span class="sp-clock" id="sp-clock">00:00</span>
   </div>
 </div>
@@ -682,6 +683,14 @@ body{background:var(--sp-bg);color:var(--sp-ink);font-family:var(--sp-body);font
   st.addEventListener('click',function(){menu.hidden=!menu.hidden; st.setAttribute('aria-expanded',!menu.hidden)});
   document.addEventListener('click',function(e){if(!menu.hidden&&!e.target.closest('.sp-task')){menu.hidden=true;st.setAttribute('aria-expanded',false)}});
   $$('[data-close]').forEach(function(b){b.addEventListener('click',function(){b.closest('.sp-win').hidden=true})});
+  var messageButton = $('#open-message');
+  var messageDialog = $('#message-dialog');
+  messageButton.addEventListener('click', function(){
+    menu.hidden = true;
+    st.setAttribute('aria-expanded', 'false');
+    messageDialog.showModal();
+  });
+  messageDialog.addEventListener('close', function(){ messageButton.focus({preventScroll:true}); });
   var tidyDialog = $('#tidy-dialog');
   $('#sp-restore').addEventListener('click', function(){
     $$('[data-drag]').forEach(function(item){
