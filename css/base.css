@@ -198,7 +198,7 @@ body{background:var(--sp-bg);color:var(--sp-ink);font-family:var(--sp-body);font
   filter:drop-shadow(2px 0 0 var(--sp-ink)) drop-shadow(-2px 0 0 var(--sp-ink)) drop-shadow(0 2px 0 var(--sp-ink)) drop-shadow(0 -2px 0 var(--sp-ink)) drop-shadow(4px 5px 0 var(--sp-violet))}
 .sp-h2 span{display:block;padding:0 .12em .06em 0;width:max-content;max-width:100%;background:linear-gradient(180deg,#fff 8%,#ff9fd0 50%,var(--sp-hot) 92%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .sp-h1 .is-glitter,.sp-h2 .is-glitter{
-  background:linear-gradient(160deg,rgba(255,207,233,.60),rgba(244,144,196,.52)),url(../img/glitter.jpg) center/150px #ffd4eb;
+  background:linear-gradient(160deg,rgba(255,69,166,.61),rgba(246,40,143,.55)),url(../img/glitter.jpg) center/150px #ff48a6;
   -webkit-background-clip:text;background-clip:text;
 }
 .sp-plain{max-width:60ch;font-size:16px;margin:0 0 26px;background:var(--sp-paper);border:2px solid var(--sp-ink);padding:10px 14px;box-shadow:4px 4px 0 var(--sp-ink)}
