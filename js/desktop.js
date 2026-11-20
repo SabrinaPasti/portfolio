@@ -96,15 +96,19 @@
     var handle=w.querySelector('.sp-tb')||w; w._x=0; w._y=0;
     handle.addEventListener('pointerdown',function(e){
       moved=false;
-      if(e.target.closest('[data-close],a')||e.pointerType!=='mouse'||innerWidth<1101) return;
+      var sticker = w.dataset.drag === 'sticker';
+      if(!e.isPrimary || e.button !== 0 || e.target.closest('[data-close],a')) return;
+      if(!sticker && (e.pointerType !== 'mouse' || innerWidth < 1101)) return;
+      if(sticker) handle.setPointerCapture(e.pointerId);
       var sx=e.clientX-w._x, sy=e.clientY-w._y, x0=e.clientX, y0=e.clientY;
       w.style.zIndex=++z;
       function mv(ev){
+        if(ev.pointerId !== e.pointerId) return;
         if(!moved&&Math.abs(ev.clientX-x0)+Math.abs(ev.clientY-y0)<5) return;
         moved=true; w.classList.add('is-drag'); w._x=ev.clientX-sx; w._y=ev.clientY-sy; w.style.translate=w._x+'px '+w._y+'px';
       }
-      function up(){w.classList.remove('is-drag'); removeEventListener('pointermove',mv); removeEventListener('pointerup',up); setTimeout(function(){moved=false},0)}
-      addEventListener('pointermove',mv); addEventListener('pointerup',up);
+      function up(ev){if(ev.pointerId !== e.pointerId) return; removeEventListener('pointercancel',up); w.classList.remove('is-drag'); removeEventListener('pointermove',mv); removeEventListener('pointerup',up); setTimeout(function(){moved=false},0)}
+      addEventListener('pointermove',mv); addEventListener('pointerup',up); addEventListener('pointercancel',up);
     });
   });
 

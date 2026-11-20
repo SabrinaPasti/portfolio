@@ -27,13 +27,14 @@ section[id] { scroll-margin-top: 18px; }
   margin: 0; padding: 8% 5%; color: #fff; font: italic 900 clamp(32px,4.4vw,66px)/.92 var(--sp-display);
   letter-spacing: -.06em; text-shadow: -2px -1px #30103c, 2px 1px #30103c, 3px 4px #30103c;
 }
-.sky-banner::after {
-  content: ""; position: absolute; right: 3%; bottom: 3%;
-  width: clamp(50px, 15%, 92px); aspect-ratio: 4 / 3;
-  background: url('../img/hello-kitty.webp') center / contain no-repeat;
-  transform: rotate(8deg); filter: drop-shadow(1px 2px 1px #351b4580);
-  pointer-events: none;
+.sp-album { position: relative; }
+.sp-album .kitty-sticker {
+  position: absolute; z-index: 5; left: 39%; bottom: 7%;
+  width: clamp(80px, 24%, 154px); height: auto; aspect-ratio: auto;
+  transform: rotate(-6deg); cursor: grab; touch-action: none; user-select: none;
+  clip-path: polygon(7% 55%,15% 48%,15% 30%,18% 25%,29% 28%,40% 27%,45% 22%,51% 22%,56% 26%,64% 23%,70% 23%,71% 34%,79% 29%,87% 34%,84% 41%,88% 45%,95% 49%,98% 59%,96% 64%,78% 70%,67% 77%,52% 82%,28% 82%,22% 88%,16% 86%,16% 79%,13% 76%,14% 70%,18% 67%,10% 69%,13% 63%,8% 62%,15% 58%);
 }
+.sp-album .kitty-sticker.is-drag { cursor: grabbing; }
 .sky-banner em { color: #ffcaed; }
 .guestbook, .tracks details p { padding: 0 16px; font: 15px/1.6 var(--sp-body); }
 .favorites img { display: block; width: calc(100% - 20px); margin: 10px; aspect-ratio: 1.15; object-fit: cover; }
