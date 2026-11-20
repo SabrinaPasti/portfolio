@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+<link rel="icon" type="image/svg+xml" sizes="any" href="favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sabrina Pasti Portfólio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -109,7 +110,7 @@ body{background:var(--sp-bg);color:var(--sp-ink);font-family:var(--sp-body);font
   filter:drop-shadow(2px 0 0 var(--sp-ink)) drop-shadow(-2px 0 0 var(--sp-ink)) drop-shadow(0 2px 0 var(--sp-ink)) drop-shadow(0 -2px 0 var(--sp-ink)) drop-shadow(5px 6px 0 var(--sp-violet))}
 .sp-h1 span{display:block;padding:0 .12em .06em 0;width:max-content;max-width:100%;
   background:linear-gradient(180deg,#fff 8%,#ff9fd0 50%,var(--sp-hot) 92%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.sp-h1 .is-glitter{background:url(glitter.jpg) center/150px;-webkit-background-clip:text;background-clip:text;animation:sp-shimmer 5s linear infinite}
+.sp-h1 .is-glitter{animation:sp-shimmer 5s linear infinite}
 @keyframes sp-shimmer{to{background-position:150px 75px}}
 .sp-lead{max-width:44ch;margin:0 0 26px;font-size:16px;line-height:28px;position:relative;padding:14px 18px 6px 22px;transform:rotate(.8deg);box-shadow:2px 4px 8px rgba(43,10,48,.22);
   background:linear-gradient(transparent 27px,#bcd3ff 27px) 0 13px/100% 28px,#fffdf6;
@@ -207,7 +208,10 @@ body{background:var(--sp-bg);color:var(--sp-ink);font-family:var(--sp-body);font
 .sp-h2{font-family:var(--sp-display);font-style:italic;font-weight:900;font-size:clamp(34px,3.900vw,56px);line-height:1;letter-spacing:-.02em;margin:0 0 30px;transform:rotate(-2deg);transform-origin:left center;
   filter:drop-shadow(2px 0 0 var(--sp-ink)) drop-shadow(-2px 0 0 var(--sp-ink)) drop-shadow(0 2px 0 var(--sp-ink)) drop-shadow(0 -2px 0 var(--sp-ink)) drop-shadow(4px 5px 0 var(--sp-violet))}
 .sp-h2 span{display:block;padding:0 .12em .06em 0;width:max-content;max-width:100%;background:linear-gradient(180deg,#fff 8%,#ff9fd0 50%,var(--sp-hot) 92%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.sp-h2 .is-glitter{background:url(glitter.jpg) center/150px;-webkit-background-clip:text;background-clip:text}
+.sp-h1 .is-glitter,.sp-h2 .is-glitter{
+  background:linear-gradient(160deg,rgba(255,235,247,.84),rgba(255,183,219,.76)),url(glitter.jpg) center/150px #ffd4eb;
+  -webkit-background-clip:text;background-clip:text;
+}
 .sp-plain{max-width:60ch;font-size:16px;margin:0 0 26px;background:var(--sp-paper);border:2px solid var(--sp-ink);padding:10px 14px;box-shadow:4px 4px 0 var(--sp-ink)}
 .sp-draft{font-family:var(--sp-ui);font-size:13px;background:var(--sp-note);border:1px dashed var(--sp-ink);padding:2px 8px;display:inline-block;margin:8px 0 0!important}
 
@@ -460,7 +464,7 @@ body{background:var(--sp-bg);color:var(--sp-ink);font-family:var(--sp-body);font
         </div>
       </div>
 
-      <span class="sp-hint">psiu… arraste as janelas pela barra</span>
+      <span class="sp-hint">psiu: dá pra arrastar tudo</span>
     </div>
 
     <aside class="sp-left" aria-label="Atalhos">
