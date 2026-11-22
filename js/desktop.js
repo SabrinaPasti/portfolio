@@ -58,7 +58,7 @@
 
   // player e CD
   var pb=$('#sp-play-btn');
-  pb.addEventListener('click',function(){var on=stage.classList.toggle('is-playing'); pb.textContent=on?'❚❚':'▶'; pb.setAttribute('aria-label',on?'Pausar animação':'Tocar animação')});
+  pb.addEventListener('click',function(){var on=stage.classList.toggle('is-playing'); pb.innerHTML='<svg class="px"><use href="#i-'+(on?'pause':'play')+'"/></svg>'; pb.setAttribute('aria-label',on?'Pausar animação':'Tocar animação')});
 
   // menu iniciar e janelas
   var st=$('#sp-start'), menu=$('#sp-menu');
@@ -90,6 +90,49 @@
     if(event.target.closest('a')){ menu.hidden = true; st.setAttribute('aria-expanded','false'); }
   });
 
+  // links dentro de diálogos que levam para a página fecham o diálogo
+  $$('[data-close-dialog]').forEach(function(a){a.addEventListener('click',function(){a.closest('dialog').close()})});
+
+  // menu: marca a seção visível
+  var navLinks=$$('.sp-nav a');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      navLinks.forEach(function(a){ if(a.getAttribute('href')==='#'+e.target.id) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current') });
+    })},{rootMargin:'-45% 0px -50% 0px'});
+    ['cases','processo','sobre','contato'].forEach(function(id){var el=document.getElementById(id); if(el) io.observe(el)});
+    var homeEl=document.getElementById('home');
+    new IntersectionObserver(function(es){ if(es[0].isIntersecting) navLinks.forEach(function(a){a.removeAttribute('aria-current')}) },{rootMargin:'-45% 0px -50% 0px'}).observe(homeEl);
+  }
+
+  // chat: a sabrina "digita" quando a janela aparece; a mensagem enviada vira balão
+  var log=$('#sp-chat-log'), form=$('#sp-chat-form'), field=$('#sp-chat-text');
+  if(log){
+    var msgs=$$('#sp-chat-log .msg:not(.is-typing)'), typing=$('#sp-chat-log .is-typing');
+    if(!calm && 'IntersectionObserver' in window){
+      msgs.forEach(function(m){m.hidden=true});
+      var chatIO=new IntersectionObserver(function(es){
+        if(!es[0].isIntersecting) return; chatIO.disconnect();
+        var k=0;
+        (function next(){
+          if(k>=msgs.length){typing.hidden=true; return}
+          typing.hidden=false; log.appendChild(typing);
+          setTimeout(function(){typing.hidden=true; msgs[k].hidden=false; msgs[k].classList.add('is-in'); log.insertBefore(msgs[k],typing); k++; setTimeout(next,450)}, k?1100:700);
+        })();
+      },{threshold:.5});
+      chatIO.observe(log);
+    }
+    form.addEventListener('submit',function(e){
+      var txt=field.value.trim();
+      if(!txt){e.preventDefault(); field.focus(); field.placeholder='escreve um oi, pode ser curtinho :)'; return}
+      var m=document.createElement('div'); m.className='msg is-me is-in'; var p=document.createElement('p'); p.textContent=txt; m.appendChild(p); log.insertBefore(m,typing);
+      setTimeout(function(){
+        var r=document.createElement('div'); r.className='msg is-in'; r.innerHTML='<p>abri o WhatsApp com a sua mensagem. é só apertar enviar por lá ♡</p>'; log.insertBefore(r,typing);
+        field.value='';
+      },600);
+    });
+  }
+
   // arrastar: janelas pela barra de título, objetos por inteiro (só com mouse, em tela grande)
   var z=10, moved=false;
   $$('[data-drag]').forEach(function(w){
@@ -115,8 +158,9 @@
   // brilho seguindo o cursor
   if(!calm&&matchMedia('(pointer:fine)').matches){
     var last=0;
-    root.addEventListener('pointermove',function(e){
-      var t=Date.now(); if(t-last<80) return; last=t;
+    var home=$('#home');
+    home.addEventListener('pointermove',function(e){
+      var t=Date.now(); if(t-last<140) return; last=t;
       var s=document.createElement('span'); s.className='sp-fx'; s.textContent='✦'; s.style.left=(e.clientX+8)+'px'; s.style.top=(e.clientY+10)+'px'; root.appendChild(s);
       s.animate([{opacity:1},{transform:'translateY(22px) scale(.3) rotate(90deg)',opacity:0}],{duration:700,easing:'ease-out'}).onfinish=function(){s.remove()};
     });
