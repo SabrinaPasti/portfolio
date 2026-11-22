@@ -370,9 +370,9 @@ img{max-width:100%}
 .sp-album figure{position:relative;margin:0;text-align:center;background:#fffaf2;padding:9px 9px 4px;box-shadow:2px 8px 18px rgba(50,34,57,.22);transform:rotate(-3deg)}
 .sp-album figure::before{content:"";position:absolute;top:-8px;left:32%;width:36%;height:18px;background:rgba(243,219,139,.75);transform:rotate(-6deg)}
 .sp-album figure+figure{transform:rotate(4deg) translateY(16px)}
-.sp-album img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover}
+.sp-album figure img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover}
 .sp-album figcaption{padding:10px 0 6px;font:italic 400 clamp(17px,1.6vw,22px)/1.1 var(--f-serif)}
-.sp-album .kitty-sticker{position:absolute;z-index:5;left:39%;bottom:7%;width:clamp(80px,24%,154px);height:auto;transform:rotate(-6deg);cursor:grab;touch-action:none;user-select:none;filter:drop-shadow(2px 4px 4px rgba(42,13,46,.25))}
+.sp-album .kitty-sticker{position:absolute;z-index:5;left:36%;bottom:4%;width:clamp(96px,30%,180px);height:auto;aspect-ratio:auto;transform:rotate(-6deg);cursor:grab;touch-action:none;user-select:none;filter:drop-shadow(2px 4px 4px rgba(42,13,46,.25))}
 .sp-album .kitty-sticker.is-drag{cursor:grabbing}
 .sp-about-copy>.sp-pens{--w:100px;--r:38deg;right:10%;bottom:-120px}
 .sp-chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0}
@@ -395,7 +395,7 @@ img{max-width:100%}
 .sp-chat{--r:14px;transform:rotate(1deg)}
 .sp-chat-bar{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:var(--bw) solid var(--ink);background:linear-gradient(180deg,#fff,#fdf1f7)}
 .sp-avatar{width:40px;height:40px;border-radius:10px;border:var(--bw) solid var(--ink);overflow:hidden;flex:none;background:linear-gradient(180deg,#a9d6ff,#ffcbe6)}
-.sp-avatar img{width:160%;max-width:none;margin:-4% 0 0 -30%;display:block}
+.sp-avatar img{width:100%;height:100%;object-fit:cover;display:block}
 .sp-chat-bar b{display:block;font-weight:600;font-size:15px;line-height:1.2}
 .sp-chat-bar small{display:flex;align-items:center;gap:6px;font:500 10.5px/1.3 var(--f-mono);letter-spacing:.04em;color:var(--ink-soft)}
 .sp-chat-bar small i{width:8px;height:8px;border-radius:50%;background:#2fcf7a;box-shadow:0 0 0 1.5px var(--ink),0 0 0 4px rgba(47,207,122,.25)}
